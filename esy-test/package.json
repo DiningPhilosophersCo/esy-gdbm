@@ -1,0 +1,8 @@
+{
+  "esy": {
+    "build": "which gdbmtool"
+  },
+  "dependencies": {
+    "esy-gdbm": "*"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "esy-gdbm",
+  "version": "1.24.0",
+  "description": "gdbm packaged for esy",
+  "source": "https://ftp.gnu.org/gnu/gdbm/gdbm-1.24.tar.gz#sha256:695e9827fdf763513f133910bc7e6cfdb9187943a4fec943e57449723d2b8dbf",
+  "license": "GPL-3.0-or-later",
+  "override": {
+    "build": [
+      "./configure #{os == 'darwin' ? '--disable-dependency-tracking': ''} --disable-silent-rules --enable-libgdbm-compat --without-readline --prefix=#{self.install}",
+      "make -j#{self.jobs}"
+    ],
+    "install": "make install",
+    "buildsInSource": true,
+    "exportedEnv": {
+      "PKG_CONFIG_PATH": {
+        "val": "#{self.lib / 'pkgconfig'}",
+        "scope": "global"
+      }
+    },
+    "dependencies": {}
+  }
+}
